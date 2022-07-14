@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./TimeSheetHeader.module.css";
-import HoursSelector from "../../../commonComponents/HoursSelector/HoursSelector";
-import DateRangeSelector from "../../../commonComponents/DateRangeSelector/DateRangeSelector";
-import SaveClearSelector from "../../../commonComponents/SaveClearSelector/SaveClearSelector";
+import HoursSelector from "../../../components/HoursSelector/HoursSelector";
+import DateRangeSelector from "../../../components/DateRangeSelector/DateRangeSelector";
+import SaveClearSelector from "../../../components/SaveClearSelector/SaveClearSelector";
 
 const TimeSheetHeader: React.FC = () => {
   return (

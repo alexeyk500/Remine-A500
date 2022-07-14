@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./App.module.css";
-import Header from "./commonComponents/Header/Header";
-import NavBar from "./commonComponents/NavBar/NavBar";
+import Header from "./components/Header/Header";
+import NavBar from "./components/NavBar/NavBar";
 import TimeSheetPage from "./pages/TimeSheetPage/TimeSheetPage";
 
 function App() {
