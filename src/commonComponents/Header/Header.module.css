@@ -1,3 +1,17 @@
 .container {
-    display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 60px;
+  background-color: #212346;
 }
+
+.title {
+  color: #F7F7F7;
+}
+
+.rightColumn {
+  display: flex;
+}
+
