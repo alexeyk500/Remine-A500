@@ -7,3 +7,9 @@
   background-color: #FFFFFF;
   height: 100%;
 }
+
+.btnExpand {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}

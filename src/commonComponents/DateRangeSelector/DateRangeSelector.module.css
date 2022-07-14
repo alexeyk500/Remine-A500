@@ -6,3 +6,46 @@
   border-radius: 16px;
   background-color: #DCDFF4;
 }
+
+.btnBack {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  margin-right: 2px;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.centerContainer {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btnForward {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  margin-left: 2px;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.splitter {
+  margin: 0 8px;
+}
+
+.fromSelector {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.toSelector {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+}
