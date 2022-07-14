@@ -1,6 +1,7 @@
 .container {
   display: flex;
-  padding-left: 16px;
+  flex-direction: column;
+  border-right: 1px solid #E4E4EF;
 }
 
 .title {
@@ -12,6 +13,5 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
-  border-right: 1px solid #E4E4EF;
   border-bottom: 1px solid #E4E4EF;
 }

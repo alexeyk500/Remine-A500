@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding: 0 8px 0 16px;
+  height: 56px;
+  justify-content: space-between;
+}
+
+.expandBtn {
+  margin-right: 8px;
+  cursor: pointer;
+}
