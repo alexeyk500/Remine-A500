@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 237px;
+  height: 40px;
+  padding: 10px 0;
+  background: #DCDFF4;
+  border-radius: 16px;
+  margin-right: 20px;
+}
+
+.leftSelector {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 8px;
+  width: 121px;
+  height: 40px;
+  background: #FFFFFF;
+  border: 1px solid rgba(33, 35, 70, 0.05);
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.rightSelector {
+  padding-right: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #7174AC;
+}
