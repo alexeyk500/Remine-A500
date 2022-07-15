@@ -31,23 +31,25 @@ const DateColumnsPart: React.FC = () => {
     // eslint-disable-next-line
   }, [daysRange, fullTimeEntries]);
 
-  const [sumHours, setSumHours] = useState(0)
-  const [sumExtraHours, setSumExtraHours] = useState(0)
-  let localSumHours = 0;
-  let localSumExtraHours = 0;
+  const [sumHours, setSumHours] = useState(0);
+  const [sumExtraHours, setSumExtraHours] = useState(0);
 
-  useEffect(()=>{
-    fullTimeEntries.forEach((timeEntry)=>{
+  useEffect(() => {
+    let localSumHours = 0;
+    let localSumExtraHours = 0;
+
+    fullTimeEntries.forEach((timeEntry) => {
       if (daysArray.includes(timeEntry.spent_on)) {
-        localSumHours += Number(timeEntry.hours)
+        localSumHours += Number(timeEntry.hours);
         if (Number(timeEntry.hours) > 0) {
-          localSumExtraHours += Number(timeEntry.hours) - 8
+          localSumExtraHours += Number(timeEntry.hours) - 8;
         }
       }
-    })
-    setSumHours(localSumHours)
-    setSumExtraHours(localSumExtraHours)
-  }, [fullTimeEntries])
+    });
+    setSumHours(localSumHours);
+    setSumExtraHours(localSumExtraHours);
+    // eslint-disable-next-line
+  }, [fullTimeEntries]);
 
   return (
     <div className={classes.container}>
@@ -57,18 +59,13 @@ const DateColumnsPart: React.FC = () => {
         ))}
       </div>
       <div className={classes.resultColum}>
-        <div className={classes.title}>
-          Итого
-        </div>
-        <div className={classes.resultPart}>
-          {sumHours}
-        </div>
+        <div className={classes.title}>Итого</div>
+        <div className={classes.resultPart}>{sumHours}</div>
         <div className={classes.summarizePart}>
           <div className={classes.resultTitle}>{sumHours}</div>
           <div className={classes.resultTitle}>{sumExtraHours}</div>
         </div>
       </div>
-
     </div>
   );
 };
