@@ -3,11 +3,13 @@ import classes from "./TimeSheetPage.module.css";
 import TimeSheetHeader from "./TimeSheetHeader/TimeSheetHeader";
 import TimeSheetTable from "./TimeSheetTable/TimeSheetTable";
 import { useAppDispatch } from "../../store/hooks";
-import { getTimeEntriesThunk } from "../../store/timeSheetSlice";
+import { getTimeEntriesThunk, setDaysRange } from "../../store/timeSheetSlice";
 
 const TimeSheetPage: React.FC = () => {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
+    dispatch(setDaysRange({ from: "2022-07-10", to: "2022-07-16" }));
     dispatch(getTimeEntriesThunk());
     // eslint-disable-next-line
   }, []);

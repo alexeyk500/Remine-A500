@@ -32,7 +32,12 @@ export type TimeEntryType = {
   hours: number;
   comments: string;
   spent_on: string;
-  created_on: string;
-  updated_on: string;
+  created_on?: string;
+  updated_on?: string;
   custom_fields: custom_field[];
+};
+
+export type daysRangeType = {
+  from: string;
+  to: string;
 };

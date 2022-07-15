@@ -1,42 +1,40 @@
 .container {
   display: flex;
-}
-
-.scrollContainer {
-  display: flex;
-}
-
-.resultColum {
-  display: flex;
-  width: 90px;
   flex-direction: column;
+  width: 95px;
   border-right: 1px solid #E4E4EF;
 }
 
-.title {
+.itemHeader {
   display: flex;
-  height: 56px;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
+  height: 56px;
   border-bottom: 1px solid #E4E4EF;
 }
 
-.resultPart {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  align-items: flex-end;
-  padding: 0 28px;
-  margin-top: 18px;
-  font-weight: 400;
-  font-size: 14px;
+.itemTitle {
+  font-weight: 700;
+  font-size: 12px;
   line-height: 20px;
 }
 
-.summarizePart {
+.itemDayOfWeek {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: right;
+  color: #656985;
+}
+
+.timeEntries {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.summarize {
   display: flex;
   padding-top: 14px;
   flex-direction: column;
@@ -51,5 +49,4 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #3448FF;
 }

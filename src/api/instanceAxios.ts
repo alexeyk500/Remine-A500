@@ -5,6 +5,5 @@ export const instanceAxios = axios.create({
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
-    // "X-Redmine-API-Key": process.env.REACT_APP_REDMINE_KEY ?? "",
   },
 });
