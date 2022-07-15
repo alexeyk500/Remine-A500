@@ -59,8 +59,6 @@ export const timeSheetSlice = createSlice({
 });
 
 export const { setDaysRange, addNewTimeEntry } = timeSheetSlice.actions;
-
-export const selectorTimeEntries = (state: RootState) => state.timeSheet.timeEntries;
 export const selectorFullTimeEntries = (state: RootState) => [
   ...state.timeSheet.timeEntries,
   ...state.timeSheet.newTimeEntries,

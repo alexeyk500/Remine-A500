@@ -1,9 +1,12 @@
 .container {
   display: flex;
+  width: 100%;
 }
 
 .scrollContainer {
+  max-width: calc(100% - 442px - 89px);
   display: flex;
+  overflow: scroll;
 }
 
 .resultColum {

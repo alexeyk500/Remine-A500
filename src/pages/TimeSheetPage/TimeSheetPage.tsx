@@ -9,7 +9,7 @@ const TimeSheetPage: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setDaysRange({ from: "2022-07-10", to: "2022-07-16" }));
+    dispatch(setDaysRange({ from: "2022-07-10", to: "2022-07-31" }));
     dispatch(getTimeEntriesThunk());
     // eslint-disable-next-line
   }, []);
