@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import classes from "./DateRangeSelector.module.css";
 import btnBack from "./../../images/btnBack.svg";
 import btnForward from "./../../images/btnForward.svg";
-import {ExpandOneDayFrom, ExpandOneDayTo, getDataStrForDaysRange} from "../../utils/functions";
+import { ExpandOneDayFrom, ExpandOneDayTo, getDataStrForDaysRange } from "../../utils/functions";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { selectorDaysRange, setDaysRange } from "../../store/timeSheetSlice";
 
 type PropsType = {
-  scrollAnchorStart: React.MutableRefObject<HTMLDivElement | null>
-  scrollAnchorEnd: React.MutableRefObject<HTMLDivElement | null>
-}
+  scrollAnchorStart: React.MutableRefObject<HTMLDivElement | null>;
+  scrollAnchorEnd: React.MutableRefObject<HTMLDivElement | null>;
+};
 
-const DateRangeSelector: React.FC <PropsType> = ({scrollAnchorStart, scrollAnchorEnd}) => {
+const DateRangeSelector: React.FC<PropsType> = ({ scrollAnchorStart, scrollAnchorEnd }) => {
   const dispatch = useAppDispatch();
   const dayRange = useAppSelector(selectorDaysRange);
   const [from, setFrom] = useState("");
@@ -36,7 +36,9 @@ const DateRangeSelector: React.FC <PropsType> = ({scrollAnchorStart, scrollAncho
     if (dayRange) {
       const newFrom = ExpandOneDayFrom(dayRange.from);
       dispatch(setDaysRange({ from: newFrom, to: dayRange.to }));
-      scrollAnchorStart && scrollAnchorStart.current && scrollAnchorStart.current.scrollIntoView({ behavior: "smooth" });
+      scrollAnchorStart &&
+        scrollAnchorStart.current &&
+        scrollAnchorStart.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 

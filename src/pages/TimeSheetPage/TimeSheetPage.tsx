@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import classes from "./TimeSheetPage.module.css";
 import TimeSheetHeader from "./TimeSheetHeader/TimeSheetHeader";
 import TimeSheetTable from "./TimeSheetTable/TimeSheetTable";
@@ -19,8 +19,8 @@ const TimeSheetPage: React.FC = () => {
 
   return (
     <div className={classes.container}>
-      <TimeSheetHeader scrollAnchorStart = {scrollAnchorStart} scrollAnchorEnd= {scrollAnchorEnd}/>
-      <TimeSheetTable scrollAnchorStart = {scrollAnchorStart} scrollAnchorEnd= {scrollAnchorEnd} />
+      <TimeSheetHeader scrollAnchorStart={scrollAnchorStart} scrollAnchorEnd={scrollAnchorEnd} />
+      <TimeSheetTable scrollAnchorStart={scrollAnchorStart} scrollAnchorEnd={scrollAnchorEnd} />
     </div>
   );
 };
