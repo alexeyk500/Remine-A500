@@ -1,23 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./DateRangeSelector.module.css";
 import btnBack from "./../../images/btnBack.svg";
 import btnForward from "./../../images/btnForward.svg";
-import {getDataStrForDaysRange} from "../../utils/functions";
-import {useAppSelector} from "../../store/hooks";
-import {selectorDaysRange} from "../../store/timeSheetSlice";
+import { getDataStrForDaysRange } from "../../utils/functions";
+import { useAppSelector } from "../../store/hooks";
+import { selectorDaysRange } from "../../store/timeSheetSlice";
 
 const DateRangeSelector: React.FC = () => {
-
   const dayRange = useAppSelector(selectorDaysRange);
-  const [from, setFrom] = useState('')
-  const [to, setTo] = useState('')
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
 
-  useEffect(()=>{
+  useEffect(() => {
     if (dayRange) {
-      setFrom(getDataStrForDaysRange(dayRange.from))
-      setTo(getDataStrForDaysRange(dayRange.to))
+      setFrom(getDataStrForDaysRange(dayRange.from));
+      setTo(getDataStrForDaysRange(dayRange.to));
     }
-  },[dayRange])
+  }, [dayRange]);
 
   return (
     <div className={classes.container}>
@@ -26,15 +25,11 @@ const DateRangeSelector: React.FC = () => {
       </button>
       <div className={classes.centerContainer}>
         <div className={classes.fromSelector}>
-          <div className={classes.title}>
-            {from}
-          </div>
+          <div className={classes.title}>{from}</div>
         </div>
         <div className={classes.splitter}>—</div>
         <div className={classes.toSelector}>
-          <div className={classes.title}>
-            {to}
-          </div>
+          <div className={classes.title}>{to}</div>
         </div>
       </div>
       <button className={classes.btnForward}>

@@ -1,5 +1,5 @@
-import {TimeEntryType} from "../types/types";
-import {v4 as uuidv4} from "uuid";
+import { TimeEntryType } from "../types/types";
+import { v4 as uuidv4 } from "uuid";
 
 export const compareStrData = (a: string, b: string) => {
   const dateA = +new Date(a);
@@ -25,11 +25,13 @@ export const getStringDatesArray = (startDate: string, stopDate: string) => {
 
 export const getDataStrForDaysRange = (strDate: string) => {
   const data = new Date(strDate);
-  return data.toLocaleDateString("ru-Ru", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).split('г')[0]
+  return data
+    .toLocaleDateString("ru-Ru", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+    .split("г")[0];
 };
 
 export const getNewTimeEntry = (date: string): TimeEntryType => {
