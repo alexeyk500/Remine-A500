@@ -5,7 +5,13 @@ import { addNewTimeEntry, selectorDaysRange, selectorFullTimeEntries } from "../
 import TimeEntryItem from "./TimeEntryItem/TimeEntryItem";
 import { getStringDatesArray } from "../../../../utils/functions";
 
-const DateColumnsPart: React.FC = () => {
+type PropsType = {
+  scrollAnchorStart: React.MutableRefObject<HTMLDivElement | null>
+  scrollAnchorEnd: React.MutableRefObject<HTMLDivElement | null>
+}
+
+const DateColumnsPart: React.FC <PropsType> = ({scrollAnchorStart, scrollAnchorEnd}) => {
+
   const daysRange = useAppSelector(selectorDaysRange);
   const [daysArray, setDaysArray] = useState<string[]>([]);
   const fullTimeEntries = useAppSelector(selectorFullTimeEntries);
@@ -54,9 +60,11 @@ const DateColumnsPart: React.FC = () => {
   return (
     <div className={classes.container}>
       <div className={classes.scrollContainer}>
+        <div ref={scrollAnchorStart}/>
         {daysArray.map((currentDate, ind) => (
           <TimeEntryItem key={ind} currentDate={currentDate} />
         ))}
+        <div ref={scrollAnchorEnd}/>
       </div>
       <div className={classes.resultColum}>
         <div className={classes.title}>Итого</div>

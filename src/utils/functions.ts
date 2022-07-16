@@ -13,11 +13,15 @@ export const getDayOfWeek = (strDate: string) => {
   return dayOfWeek[0].toUpperCase() + dayOfWeek.slice(1);
 };
 
+export const dateToStrDate = (date: Date) => {
+  return date.toISOString().split("T")[0];
+};
+
 export const getStringDatesArray = (startDate: string, stopDate: string) => {
   const dateArray = [];
   const currentDate = new Date(startDate);
   while (currentDate <= new Date(stopDate)) {
-    dateArray.push(currentDate.toISOString().split("T")[0]);
+    dateArray.push(dateToStrDate(currentDate));
     currentDate.setDate(currentDate.getDate() + 1);
   }
   return dateArray;
@@ -25,13 +29,13 @@ export const getStringDatesArray = (startDate: string, stopDate: string) => {
 
 export const getDataStrForDaysRange = (strDate: string) => {
   const data = new Date(strDate);
-  return data
-    .toLocaleDateString("ru-Ru", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
-    .split("г")[0];
+  const localData = data.toLocaleDateString("ru-Ru", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const splitLocalData = localData.split(" ");
+  return `${splitLocalData[0]} ${splitLocalData[1]} ${splitLocalData[2]}`;
 };
 
 export const getNewTimeEntry = (date: string): TimeEntryType => {
@@ -57,4 +61,16 @@ export const getNewTimeEntry = (date: string): TimeEntryType => {
     spent_on: date,
     custom_fields: [],
   };
+};
+
+export const ExpandOneDayTo = (strDate: string) => {
+  const currentDate = new Date(strDate);
+  currentDate.setDate(currentDate.getDate() + 1);
+  return dateToStrDate(currentDate);
+};
+
+export const ExpandOneDayFrom = (strDate: string) => {
+  const currentDate = new Date(strDate);
+  currentDate.setDate(currentDate.getDate() - 1);
+  return dateToStrDate(currentDate);
 };
