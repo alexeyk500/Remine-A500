@@ -11,7 +11,7 @@ const SaveClearSelector: React.FC = () => {
     const conf = window.confirm(`Отменить изменения?`);
     if (conf && dayRange) {
       dispatch(clearNewTimeEntries());
-      dispatch(getTimeEntriesThunk());
+      dispatch(getTimeEntriesThunk({ from: dayRange.from, to: dayRange.to }));
     }
   };
 

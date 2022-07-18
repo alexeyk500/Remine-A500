@@ -23,11 +23,11 @@ const initialState: TimeSheetState = {
 
 export const getTimeEntriesThunk = createAsyncThunk<
   { time_entries: TimeEntryType[] },
-  undefined,
+  { from: string; to: string },
   { rejectValue: string }
->("timeSheet/getTimeEntriesThunk", async (_, { rejectWithValue }) => {
+>("timeSheet/getTimeEntriesThunk", async (dataFromTo, { rejectWithValue }) => {
   try {
-    return await serverApi.fetchTimeEntries();
+    return await serverApi.fetchTimeEntries(dataFromTo);
   } catch (e) {
     return rejectWithValue("Server error - get User");
   }

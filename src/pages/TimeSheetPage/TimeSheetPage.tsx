@@ -18,7 +18,7 @@ const TimeSheetPage: React.FC = () => {
     dateFromDate.setDate(dateFromDate.getDate() - 14);
     const dateFrom = dateToStrDate(dateFromDate);
     dispatch(setDaysRange({ from: dateFrom, to: dateTo }));
-    dispatch(getTimeEntriesThunk());
+    dispatch(getTimeEntriesThunk({ from: dateFrom, to: dateTo }));
     // eslint-disable-next-line
   }, []);
 
