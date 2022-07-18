@@ -4,7 +4,7 @@ const proxy = require('express-http-proxy');
 const path = require('path');
 require('dotenv').config()
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.get('/ping', function (req, res) {
 });
 
 app.get('/hello', function (req, res) {
-  return res.send(<h2>Hello</h2>);
+  return res.send('<h2>Hello</h2>');
 });
 
 app.get('/*', function (req, res) {
