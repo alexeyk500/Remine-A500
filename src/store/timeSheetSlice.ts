@@ -57,6 +57,11 @@ export const timeSheetSlice = createSlice({
     clearNewTimeEntries: (state) => {
       state.newTimeEntries = [];
     },
+    clearAllTimeEntries: (state) => {
+      state.newTimeEntries = [];
+      state.timeEntries = [];
+      state.referenceTimeEntries = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -75,11 +80,15 @@ export const timeSheetSlice = createSlice({
   },
 });
 
-export const { setDaysRange, addNewTimeEntry, changeHoursTimeEntry, clearNewTimeEntries } = timeSheetSlice.actions;
+export const { setDaysRange, addNewTimeEntry, changeHoursTimeEntry, clearNewTimeEntries, clearAllTimeEntries } =
+  timeSheetSlice.actions;
 export const selectorFullTimeEntries = (state: RootState) => [
   ...state.timeSheet.timeEntries,
   ...state.timeSheet.newTimeEntries,
 ];
+export const selectorNewTimeEntries = (state: RootState) => state.timeSheet.newTimeEntries;
+export const selectorTimeEntries = (state: RootState) => state.timeSheet.timeEntries;
+export const selectorReferenceTimeEntries = (state: RootState) => state.timeSheet.referenceTimeEntries;
 export const selectorDaysRange = (state: RootState) => state.timeSheet.daysRange;
 export const selectorTimeEntriesIsLoading = (state: RootState) => state.timeSheet.isLoading;
 

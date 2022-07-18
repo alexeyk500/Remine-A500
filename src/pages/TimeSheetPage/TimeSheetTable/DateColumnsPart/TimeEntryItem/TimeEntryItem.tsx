@@ -15,6 +15,7 @@ const TimeEntryItem: React.FC<PropsType> = ({ currentDate }) => {
   const fullTimeEntries = useAppSelector(selectorFullTimeEntries);
   let sumHours = 0;
   const isOddNumber = Number(currentDate.split("-")[2]) % 2 === 0;
+  // console.log('fullTimeEntries =', fullTimeEntries)
 
   return (
     <div className={classes.container}>
@@ -25,6 +26,7 @@ const TimeEntryItem: React.FC<PropsType> = ({ currentDate }) => {
       <div className={classes.timeEntries}>
         {fullTimeEntries.map((timeEntry) => {
           if (timeEntry.spent_on === currentDate) {
+            // console.log('timeEntry =', timeEntry)
             sumHours += Number(timeEntry.hours);
             return <TimeSheetItem key={timeEntry.id} timeEntry={timeEntry} />;
           } else {

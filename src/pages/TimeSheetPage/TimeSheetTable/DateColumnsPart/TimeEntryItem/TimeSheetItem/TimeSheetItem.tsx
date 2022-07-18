@@ -12,7 +12,6 @@ const TimeSheetItem: React.FC<PropsType> = ({ timeEntry }) => {
   const dispatch = useAppDispatch();
 
   const onChange = (newValue: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(newValue.currentTarget.value);
     dispatch(changeHoursTimeEntry({ id: timeEntry.id, hours: newValue.currentTarget.value }));
   };
   return (
@@ -27,10 +26,9 @@ const TimeSheetItem: React.FC<PropsType> = ({ timeEntry }) => {
         className={classes.commentRow}
         style={{
           color: timeEntry.hours === 0 ? "#7174AC" : "#212346",
-          fontSize: timeEntry.comments.length === 0 ? "8px" : "10px",
         }}
       >
-        {!!timeEntry.comments.length ? timeEntry.comments : "Комментариев нет"}
+        {timeEntry.comments && !!timeEntry.comments.length ? timeEntry.comments : "Комментариев нет"}
       </div>
     </div>
   );
