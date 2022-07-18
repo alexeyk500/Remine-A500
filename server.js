@@ -2,6 +2,8 @@ const express = require('express');
 
 const proxy = require('express-http-proxy');
 const path = require('path');
+require('dotenv').config()
+
 const port = process.env.PORT || 8080;
 
 const app = express();
@@ -13,6 +15,10 @@ app.use('/proxy', proxy('https://opt2.rbtechnologies.ru:9909'));
 
 app.get('/ping', function (req, res) {
   return res.send('pong');
+});
+
+app.get('/hello', function (req, res) {
+  return res.send(<h2>Hello</h2>);
 });
 
 app.get('/*', function (req, res) {
