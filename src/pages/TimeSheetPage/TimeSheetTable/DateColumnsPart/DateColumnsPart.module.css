@@ -1,6 +1,7 @@
 .container {
   display: flex;
-  width: 69.7vw;
+  /*width: 69.7vw;*/
+  width: 65vw;
 }
 
 .scrollContainer {
