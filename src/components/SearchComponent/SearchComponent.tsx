@@ -3,7 +3,7 @@ import classes from "./SearchComponent.module.css";
 import search from "./../../images/search.svg";
 import bell from "./../../images/bell.svg";
 import query from "./../../images/query.svg";
-import avatar from "./../../images/avatar.jpg";
+import avatar from "./../../images/avatar.png";
 
 const SearchComponent: React.FC = () => {
   return (
