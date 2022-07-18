@@ -2,7 +2,7 @@ const express = require('express');
 
 const proxy = require('express-http-proxy');
 const path = require('path');
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 8080;
 
 const app = express();
 
@@ -20,5 +20,5 @@ app.get('/*', function (req, res) {
 });
 
 app.listen(port, ()=>{
-  console.log(`server is listening on port ${port}`);
+  console.log(`server is listening on port ${port}`, __dirname);
 });
