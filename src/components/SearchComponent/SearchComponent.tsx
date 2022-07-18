@@ -3,7 +3,7 @@ import classes from "./SearchComponent.module.css";
 import search from "./../../images/search.svg";
 import bell from "./../../images/bell.svg";
 import query from "./../../images/query.svg";
-import avatar from "./../../images/avatar.svg";
+import avatar from "./../../images/avatar.jpg";
 
 const SearchComponent: React.FC = () => {
   return (
@@ -18,7 +18,7 @@ const SearchComponent: React.FC = () => {
         <img src={query} alt="query ico" />
       </div>
       <div className={classes.avatarContainer}>
-        <img src={avatar} alt="avatar ico" />
+        <img src={avatar} alt="avatar ico" style={{borderRadius: '50%'}} />
       </div>
     </>
   );

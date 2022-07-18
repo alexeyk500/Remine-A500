@@ -25,4 +25,5 @@
 .avatarContainer {
   display: flex;
   align-items: center;
+  background-color: var(--main-text-color);
 }
