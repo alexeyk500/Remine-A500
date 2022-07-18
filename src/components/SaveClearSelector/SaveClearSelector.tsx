@@ -42,7 +42,7 @@ const SaveClearSelector: React.FC = () => {
     const promisesCreating: Promise<any>[] = [];
     timeEntriesForCreating.forEach((timeEntry) => {
       // const promise = axios.post(`proxy/time_entries.json?key=${process.env.REACT_APP_REDMINE_KEY}`, {
-      const promise = axios.post(`https://opt2.rbtechnologies.ru:9909/time_entries.json?key=${process.env.REACT_APP_REDMINE_KEY}`, {
+      const promise = axios.post(`https://cors-anywhere.herokuapp.com/https://opt2.rbtechnologies.ru:9909/time_entries.json?key=${process.env.REACT_APP_REDMINE_KEY}`, {
         time_entry: {
           issue_id: 11798,
           spent_on: timeEntry.spent_on,
@@ -55,7 +55,8 @@ const SaveClearSelector: React.FC = () => {
 
     const promisesUpdating: Promise<any>[] = [];
     timeEntriesForUpdating.forEach((timeEntry) => {
-      const promise = axios.put(`proxy/time_entries/${timeEntry.id}.json?key=${process.env.REACT_APP_REDMINE_KEY}`, {
+      // const promise = axios.put(`proxy/time_entries/${timeEntry.id}.json?key=${process.env.REACT_APP_REDMINE_KEY}`, {
+      const promise = axios.put(`https://cors-anywhere.herokuapp.com/https://opt2.rbtechnologies.ru:9909/time_entries/${timeEntry.id}.json?key=${process.env.REACT_APP_REDMINE_KEY}`, {
         time_entry: timeEntry,
       });
       promisesUpdating.push(promise);
@@ -63,7 +64,8 @@ const SaveClearSelector: React.FC = () => {
 
     const promisesDeleting: Promise<any>[] = [];
     timeEntriesForDeleting.forEach((timeEntry) => {
-      const promise = axios.delete(`proxy/time_entries/${timeEntry.id}.json?key=${process.env.REACT_APP_REDMINE_KEY}`);
+      // const promise = axios.delete(`proxy/time_entries/${timeEntry.id}.json?key=${process.env.REACT_APP_REDMINE_KEY}`);
+      const promise = axios.delete(`https://cors-anywhere.herokuapp.com/https://opt2.rbtechnologies.ru:9909/time_entries/${timeEntry.id}.json?key=${process.env.REACT_APP_REDMINE_KEY}`);
       promisesUpdating.push(promise);
     });
     Promise.all([...promisesCreating, ...promisesUpdating, ...promisesDeleting]).then(() => {
