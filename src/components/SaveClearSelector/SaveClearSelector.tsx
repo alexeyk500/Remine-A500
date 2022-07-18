@@ -41,7 +41,8 @@ const SaveClearSelector: React.FC = () => {
 
     const promisesCreating: Promise<any>[] = [];
     timeEntriesForCreating.forEach((timeEntry) => {
-      const promise = axios.post(`proxy/time_entries.json?key=${process.env.REACT_APP_REDMINE_KEY}`, {
+      // const promise = axios.post(`proxy/time_entries.json?key=${process.env.REACT_APP_REDMINE_KEY}`, {
+      const promise = axios.post(`https://opt2.rbtechnologies.ru:9909/time_entries.json?key=${process.env.REACT_APP_REDMINE_KEY}`, {
         time_entry: {
           issue_id: 11798,
           spent_on: timeEntry.spent_on,
