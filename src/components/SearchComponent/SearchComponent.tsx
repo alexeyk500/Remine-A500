@@ -18,7 +18,7 @@ const SearchComponent: React.FC = () => {
         <img src={query} alt="query ico" />
       </div>
       <div className={classes.avatarContainer}>
-        <img src={avatar} alt="avatar ico" style={{borderRadius: '50%'}} />
+        <img src={avatar} alt="avatar ico" style={{ borderRadius: "50%" }} />
       </div>
     </>
   );
