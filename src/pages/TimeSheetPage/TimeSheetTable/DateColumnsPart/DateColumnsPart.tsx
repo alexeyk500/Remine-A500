@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import classes from "./DateColumnsPart.module.css";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
-import { addNewTimeEntry, selectorDaysRange, selectorFullTimeEntries } from "../../../../store/timeSheetSlice";
+import {
+  addNewTimeEntry,
+  selectorDaysRange,
+  selectorFullTimeEntries,
+  selectorTimeEntriesIsLoading,
+} from "../../../../store/timeSheetSlice";
 import TimeEntryItem from "./TimeEntryItem/TimeEntryItem";
 import { getStringDatesArray } from "../../../../utils/functions";
+import Preloader from "../../../../components/Preloader/Preloader";
 
 type PropsType = {
   scrollAnchorStart: React.MutableRefObject<HTMLDivElement | null>;
@@ -14,6 +20,7 @@ const DateColumnsPart: React.FC<PropsType> = ({ scrollAnchorStart, scrollAnchorE
   const daysRange = useAppSelector(selectorDaysRange);
   const [daysArray, setDaysArray] = useState<string[]>([]);
   const fullTimeEntries = useAppSelector(selectorFullTimeEntries);
+  const isLoading = useAppSelector(selectorTimeEntriesIsLoading);
 
   const dispatch = useAppDispatch();
 
@@ -54,25 +61,31 @@ const DateColumnsPart: React.FC<PropsType> = ({ scrollAnchorStart, scrollAnchorE
     setSumHours(localSumHours);
     setSumExtraHours(localSumExtraHours);
     // eslint-disable-next-line
-  }, [fullTimeEntries]);
+  }, [fullTimeEntries, daysArray]);
 
   return (
     <div className={classes.container}>
-      <div className={classes.scrollContainer}>
-        <div ref={scrollAnchorStart} />
-        {daysArray.map((currentDate, ind) => (
-          <TimeEntryItem key={ind} currentDate={currentDate} />
-        ))}
-        <div ref={scrollAnchorEnd} />
-      </div>
-      <div className={classes.resultColum}>
-        <div className={classes.title}>Итого</div>
-        <div className={classes.resultPart}>{sumHours}</div>
-        <div className={classes.summarizePart}>
-          <div className={classes.resultTitle}>{sumHours}</div>
-          <div className={classes.resultTitle}>{sumExtraHours}</div>
-        </div>
-      </div>
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <>
+          <div className={classes.scrollContainer}>
+            <div ref={scrollAnchorStart} />
+            {daysArray.map((currentDate, ind) => (
+              <TimeEntryItem key={ind} currentDate={currentDate} />
+            ))}
+            <div ref={scrollAnchorEnd} />
+          </div>
+          <div className={classes.resultColum}>
+            <div className={classes.title}>Итого</div>
+            <div className={classes.resultPart}>{sumHours}</div>
+            <div className={classes.summarizePart}>
+              <div className={classes.resultTitle}>{sumHours}</div>
+              <div className={classes.resultTitle}>{sumExtraHours}</div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

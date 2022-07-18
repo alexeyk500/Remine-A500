@@ -1,17 +1,28 @@
 import React from "react";
 import classes from "./TimeSheetItem.module.css";
 import { TimeEntryType } from "../../../../../../types/types";
+import { useAppDispatch } from "../../../../../../store/hooks";
+import { changeHoursTimeEntry } from "../../../../../../store/timeSheetSlice";
 
 type PropsType = {
   timeEntry: TimeEntryType;
 };
 
 const TimeSheetItem: React.FC<PropsType> = ({ timeEntry }) => {
+  const dispatch = useAppDispatch();
+
+  const onChange = (newValue: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(newValue.currentTarget.value);
+    dispatch(changeHoursTimeEntry({ id: timeEntry.id, hours: newValue.currentTarget.value }));
+  };
   return (
     <div className={classes.container}>
-      <div className={classes.hoursRow} style={{ color: timeEntry.hours === 0 ? "#7174AC" : "#212346" }}>
-        {timeEntry.hours}
-      </div>
+      <input
+        className={classes.hoursInput}
+        style={{ color: timeEntry.hours === 0 ? "#7174AC" : "#212346" }}
+        value={timeEntry.hours}
+        onChange={onChange}
+      />
       <div
         className={classes.commentRow}
         style={{
@@ -19,7 +30,7 @@ const TimeSheetItem: React.FC<PropsType> = ({ timeEntry }) => {
           fontSize: timeEntry.comments.length === 0 ? "8px" : "10px",
         }}
       >
-        {!!timeEntry.comments.length ? timeEntry.comments : "Без комментариев"}
+        {!!timeEntry.comments.length ? timeEntry.comments : "Комментариев нет"}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import TimeSheetHeader from "./TimeSheetHeader/TimeSheetHeader";
 import TimeSheetTable from "./TimeSheetTable/TimeSheetTable";
 import { useAppDispatch } from "../../store/hooks";
 import { getTimeEntriesThunk, setDaysRange } from "../../store/timeSheetSlice";
+import { dateToStrDate } from "../../utils/functions";
 
 const TimeSheetPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -12,7 +13,11 @@ const TimeSheetPage: React.FC = () => {
   const scrollAnchorEnd = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    dispatch(setDaysRange({ from: "2022-07-10", to: "2022-07-31" }));
+    const dateTo = dateToStrDate(new Date());
+    const dateFromDate = new Date();
+    dateFromDate.setDate(dateFromDate.getDate() - 14);
+    const dateFrom = dateToStrDate(dateFromDate);
+    dispatch(setDaysRange({ from: dateFrom, to: dateTo }));
     dispatch(getTimeEntriesThunk());
     // eslint-disable-next-line
   }, []);

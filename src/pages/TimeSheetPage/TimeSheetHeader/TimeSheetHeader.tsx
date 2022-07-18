@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./TimeSheetHeader.module.css";
 import HoursSelector from "../../../components/HoursSelector/HoursSelector";
-import DateRangeSelector from "../../../components/DateRangeSelector/DateRangeSelector";
 import SaveClearSelector from "../../../components/SaveClearSelector/SaveClearSelector";
+import CustomDatePicker from "../../../components/CustomDatePicker/CustomDatePicker";
 
 type PropsType = {
   scrollAnchorStart: React.MutableRefObject<HTMLDivElement | null>;
@@ -15,7 +15,7 @@ const TimeSheetHeader: React.FC<PropsType> = ({ scrollAnchorStart, scrollAnchorE
       <div className={classes.leftPart}>
         <div className={classes.title}>Табель</div>
         <HoursSelector />
-        <DateRangeSelector scrollAnchorStart={scrollAnchorStart} scrollAnchorEnd={scrollAnchorEnd} />
+        <CustomDatePicker scrollAnchorStart={scrollAnchorStart} scrollAnchorEnd={scrollAnchorEnd} />
       </div>
       <SaveClearSelector />
     </div>

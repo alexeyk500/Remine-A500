@@ -11,22 +11,6 @@ type PropsType = {
 
 const TimeEntryItem: React.FC<PropsType> = ({ currentDate }) => {
   const date = currentDate.split("-");
-  // const timeEntries = useAppSelector(selectorTimeEntries);
-  // const matchedTimeEntries = timeEntries.filter(curTimeEntries => curTimeEntries.created_on.split('T')[0] === currentDate)
-
-  // const timeEntriesForSort = [...timeEntries];
-  // const sortedTimeEntries = timeEntriesForSort.sort((a, b) => compareStrData(a.created_on, b.created_on));
-
-  // console.log(currentDate, matchedTimeEntries)
-  // sortedTimeEntries.forEach(curTimeEntries => {
-  //   console.log(curTimeEntries.id, curTimeEntries.created_on.split('T')[0], currentDate)
-  // })
-
-  // if (!!matchedTimeEntries.length) {
-  //   console.log(currentDate, matchedTimeEntries)
-  // } else {
-  //   console.log(currentDate, 'no Matched TimeEntries')
-  // }
 
   const fullTimeEntries = useAppSelector(selectorFullTimeEntries);
   let sumHours = 0;

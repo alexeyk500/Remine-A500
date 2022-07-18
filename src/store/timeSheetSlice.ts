@@ -8,6 +8,7 @@ import { getNewTimeEntry } from "../utils/functions";
 export interface TimeSheetState {
   isLoading: boolean;
   timeEntries: TimeEntryType[];
+  referenceTimeEntries: TimeEntryType[];
   daysRange: daysRangeType | undefined;
   newTimeEntries: TimeEntryType[];
 }
@@ -15,6 +16,7 @@ export interface TimeSheetState {
 const initialState: TimeSheetState = {
   isLoading: false,
   timeEntries: [],
+  referenceTimeEntries: [],
   daysRange: undefined,
   newTimeEntries: [],
 };
@@ -41,6 +43,20 @@ export const timeSheetSlice = createSlice({
     addNewTimeEntry: (state, action: PayloadAction<string>) => {
       state.newTimeEntries.push(getNewTimeEntry(action.payload));
     },
+    changeHoursTimeEntry: (state, action: PayloadAction<{ id: string; hours: string }>) => {
+      const timeEntryInd = state.timeEntries.findIndex((entry) => entry.id === action.payload.id);
+      if (timeEntryInd > -1) {
+        state.timeEntries[timeEntryInd].hours = Number(action.payload.hours);
+      } else {
+        const newTimeEntryInd = state.newTimeEntries.findIndex((entry) => entry.id === action.payload.id);
+        if (newTimeEntryInd > -1) {
+          state.newTimeEntries[newTimeEntryInd].hours = Number(action.payload.hours);
+        }
+      }
+    },
+    clearNewTimeEntries: (state) => {
+      state.newTimeEntries = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -49,6 +65,7 @@ export const timeSheetSlice = createSlice({
       })
       .addCase(getTimeEntriesThunk.fulfilled, (state, action) => {
         state.timeEntries = action.payload.time_entries;
+        state.referenceTimeEntries = action.payload.time_entries;
         state.isLoading = false;
       })
       .addCase(getTimeEntriesThunk.rejected, (state, action) => {
@@ -58,7 +75,7 @@ export const timeSheetSlice = createSlice({
   },
 });
 
-export const { setDaysRange, addNewTimeEntry } = timeSheetSlice.actions;
+export const { setDaysRange, addNewTimeEntry, changeHoursTimeEntry, clearNewTimeEntries } = timeSheetSlice.actions;
 export const selectorFullTimeEntries = (state: RootState) => [
   ...state.timeSheet.timeEntries,
   ...state.timeSheet.newTimeEntries,

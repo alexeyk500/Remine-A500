@@ -1,9 +1,22 @@
 .container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 312px;
   height: 40px;
   border-radius: 16px;
+  background-color: #DCDFF4;
+}
+
+.btnTitle {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #082253;
+  outline: none;
+  border: none;
   background-color: #DCDFF4;
 }
 
@@ -17,13 +30,6 @@
   cursor: pointer;
 }
 
-.centerContainer {
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .btnForward {
   display: flex;
   align-items: center;
@@ -32,31 +38,4 @@
   background-color: inherit;
   border: none;
   cursor: pointer;
-}
-
-.splitter {
-  margin: 0 8px;
-}
-
-.fromSelector {
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-end;
-}
-
-.toSelector {
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-start;
-}
-
-.title {
-  display: flex;
-  cursor: pointer;
-
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  color: #082253;
 }

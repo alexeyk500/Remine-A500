@@ -1,10 +1,9 @@
 .container {
   display: flex;
-  width: 100%;
+  width: 69.7vw;
 }
 
 .scrollContainer {
-  max-width: calc(100% - 442px - 89px);
   display: flex;
   overflow: scroll;
 }
@@ -12,7 +11,9 @@
 .resultColum {
   display: flex;
   width: 90px;
+  min-width: 90px;
   flex-direction: column;
+  border-left: 1px solid #E4E4EF;
   border-right: 1px solid #E4E4EF;
 }
 
